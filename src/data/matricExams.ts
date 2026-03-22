@@ -1,3 +1,5 @@
+import { matric2016MathQuestions } from "./matric2016MathQuestions";
+
 export interface MatricExamQuestion {
   id: string;
   question: string;
@@ -16,12 +18,11 @@ export interface MatricExamYear {
   subjects: MatricExamSubject[];
 }
 
-
 export const matricExams: MatricExamYear[] = [
   {
     year: 2016,
     subjects: [
-      { subject: "Mathematics", questions: [] },
+      { subject: "Mathematics", questions: matric2016MathQuestions },
       { subject: "Physics", questions: [] },
       { subject: "Chemistry", questions: [] },
       { subject: "Biology", questions: [] },
