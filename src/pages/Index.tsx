@@ -4,33 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { BarChart3, BookOpen, Sparkles, GraduationCap, ArrowLeft, MessageSquare, Brain, Trophy, Quote, ScrollText } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import TopBar from "@/components/TopBar";
+import StarField from "@/components/StarField";
 import { getRecentAttempts } from "@/lib/performanceUtils";
 import { migrateLocalDataToDb } from "@/lib/dbPerformanceUtils";
 import { formatDistanceToNow } from "date-fns";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
-
-const generateStars = (count: number) =>
-  Array.from({ length: count }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    duration: Math.random() * 4 + 3,
-    delay: Math.random() * 5,
-    opacity: Math.random() * 0.5 + 0.1,
-  }));
-
-const generateShootingStars = (count: number) =>
-  Array.from({ length: count }, (_, i) => ({
-    id: i,
-    x: Math.random() * 60 + 20,
-    y: Math.random() * 40 + 5,
-    duration: Math.random() * 2 + 1.5,
-    delay: Math.random() * 8 + 4 + i * 6,
-    totalDelay: Math.random() * 15 + 8 + i * 8,
-  }));
 
 const Index = () => {
   const navigate = useNavigate();
