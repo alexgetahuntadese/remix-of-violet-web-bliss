@@ -16,8 +16,6 @@ const Index = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
   const { user, signOut } = useAuth();
-  const stars = useMemo(() => generateStars(60), []);
-  const shootingStars = useMemo(() => generateShootingStars(4), []);
   const recentAttempts = useMemo(() => getRecentAttempts(5), []);
 
   // Migrate local data on first login
