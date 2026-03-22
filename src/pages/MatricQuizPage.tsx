@@ -111,7 +111,10 @@ const MatricQuizPage = () => {
 
         <Card className="bg-white/[0.04] backdrop-blur-xl border-white/[0.08] mb-6">
           <CardContent className="p-6">
-            <p className="text-white text-lg font-medium mb-6">{currentQuestion.question}</p>
+            <p className="text-white text-lg font-medium mb-6">
+              <span className="text-white/50 mr-2">{currentIndex + 1}.</span>
+              {currentQuestion.question}
+            </p>
             <div className="space-y-3">
               {currentQuestion.options.map((option, idx) => {
                 let borderClass = 'border-white/[0.08] hover:border-white/20';
