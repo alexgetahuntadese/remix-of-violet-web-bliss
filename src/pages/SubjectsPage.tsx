@@ -205,43 +205,8 @@ const SubjectsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 pt-14 px-4 pb-4 md:p-8 md:pt-14 overflow-hidden relative">
+      <StarField starCount={40} shootingCount={4} />
       <TopBar />
-      {/* Floating stars */}
-      {stars.map((star) => (
-        <div
-          key={star.id}
-          className="absolute rounded-full bg-white pointer-events-none"
-          style={{
-            left: `${star.x}%`,
-            top: `${star.y}%`,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-            opacity: star.opacity,
-            animation: `float-star ${star.duration}s ease-in-out ${star.delay}s infinite alternate`,
-          }}
-        />
-      ))}
-
-      {/* Shooting stars */}
-      {shootingStars.map((star) => (
-        <div
-          key={`shooting-${star.id}`}
-          className="absolute pointer-events-none"
-          style={{
-            left: `${star.x}%`,
-            top: `${star.y}%`,
-            height: '2px',
-            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.8), rgba(168,130,255,0.6), transparent)',
-            borderRadius: '9999px',
-            animation: `shooting-star ${star.duration}s ease-in ${star.totalDelay}s infinite`,
-            boxShadow: '0 0 6px 1px rgba(168,130,255,0.4)',
-          }}
-        />
-      ))}
-
-      {/* Decorative background elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-violet-600/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-fuchsia-600/10 rounded-full blur-3xl animate-pulse [animation-delay:1s]" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         <Button
