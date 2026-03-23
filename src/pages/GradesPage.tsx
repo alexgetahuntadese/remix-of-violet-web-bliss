@@ -1,30 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { useMemo } from "react";
 import { ArrowLeft, BookOpen, Trophy, Sparkles, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/i18n/LanguageContext";
 import TopBar from "@/components/TopBar";
-
-const generateStars = (count: number) =>
-  Array.from({ length: count }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    duration: Math.random() * 4 + 3,
-    delay: Math.random() * 5,
-    opacity: Math.random() * 0.5 + 0.1,
-  }));
-
-const generateShootingStars = (count: number) =>
-  Array.from({ length: count }, (_, i) => ({
-    id: i,
-    x: Math.random() * 60 + 20,
-    y: Math.random() * 40 + 5,
-    duration: Math.random() * 2 + 1.5,
-    delay: Math.random() * 8 + 4 + i * 6,
-    totalDelay: Math.random() * 15 + 8 + i * 8,
-  }));
+import StarField from '@/components/StarField';
 
 const gradeData = [
   {
@@ -68,49 +47,11 @@ const gradeData = [
 const GradesPage = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
-  const stars = useMemo(() => generateStars(50), []);
-  const shootingStars = useMemo(() => generateShootingStars(4), []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 pt-14 px-4 pb-4 md:p-8 md:pt-14 overflow-hidden relative">
+      <StarField starCount={50} shootingCount={4} />
       <TopBar />
-      {/* Floating stars */}
-      {stars.map((star) => (
-        <div
-          key={star.id}
-          className="absolute rounded-full bg-white pointer-events-none"
-          style={{
-            left: `${star.x}%`,
-            top: `${star.y}%`,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-            opacity: star.opacity,
-            animation: `float-star ${star.duration}s ease-in-out ${star.delay}s infinite alternate`,
-          }}
-        />
-      ))}
-
-      {/* Shooting stars */}
-      {shootingStars.map((star) => (
-        <div
-          key={`shooting-${star.id}`}
-          className="absolute pointer-events-none"
-          style={{
-            left: `${star.x}%`,
-            top: `${star.y}%`,
-            height: '2px',
-            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.8), rgba(168,130,255,0.6), transparent)',
-            borderRadius: '9999px',
-            animation: `shooting-star ${star.duration}s ease-in ${star.totalDelay}s infinite`,
-            boxShadow: '0 0 6px 1px rgba(168,130,255,0.4)',
-          }}
-        />
-      ))}
-
-      {/* Decorative background elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-violet-600/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-fuchsia-600/10 rounded-full blur-3xl animate-pulse [animation-delay:1s]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/5 rounded-full blur-3xl" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         <Button
