@@ -41,8 +41,6 @@ const ChaptersPage = () => {
   const navigate = useNavigate();
   const { grade, subject } = useParams();
   const decodedSubject = decodeURIComponent(subject || '');
-  const stars = useMemo(() => generateStars(40), []);
-  const shootingStars = useMemo(() => generateShootingStars(4), []);
 
   // Get chapters based on subject and grade
   const getChaptersForSubject = () => {
