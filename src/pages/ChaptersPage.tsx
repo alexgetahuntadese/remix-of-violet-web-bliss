@@ -1,31 +1,10 @@
-import { useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Play, CheckCircle, Clock, BookOpen, Target, Sparkles, GraduationCap } from 'lucide-react';
 import TopBar from "@/components/TopBar";
-
-const generateStars = (count: number) =>
-  Array.from({ length: count }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    duration: Math.random() * 4 + 3,
-    delay: Math.random() * 5,
-    opacity: Math.random() * 0.5 + 0.1,
-  }));
-
-const generateShootingStars = (count: number) =>
-  Array.from({ length: count }, (_, i) => ({
-    id: i,
-    x: Math.random() * 60 + 20,
-    y: Math.random() * 40 + 5,
-    duration: Math.random() * 2 + 1.5,
-    delay: Math.random() * 8 + 4 + i * 6,
-    totalDelay: Math.random() * 15 + 8 + i * 8,
-  }));
+import StarField from '@/components/StarField';
 import { grade12Mathematics } from '@/data/grade12Mathematics';
 import { grade12BiologyQuestions } from '@/data/grade12BiologyQuestions';
 import { grade12ChemistryQuestions } from '@/data/grade12ChemistryQuestions';
