@@ -47,8 +47,6 @@ const gradeData = [
 const GradesPage = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
-  const stars = useMemo(() => generateStars(50), []);
-  const shootingStars = useMemo(() => generateShootingStars(4), []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-950 via-violet-900 to-purple-950 pt-14 px-4 pb-4 md:p-8 md:pt-14 overflow-hidden relative">
