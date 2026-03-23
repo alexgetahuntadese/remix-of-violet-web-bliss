@@ -27,8 +27,6 @@ import {
 const SubjectsPage = () => {
   const navigate = useNavigate();
   const { grade } = useParams();
-  const stars = useMemo(() => generateStars(40), []);
-  const shootingStars = useMemo(() => generateShootingStars(4), []);
 
   const subjectIcons = {
     'Mathematics': Calculator,
